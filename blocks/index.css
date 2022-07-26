@@ -1,0 +1,12 @@
+@import url(../vendor/normalize.css);
+
+/* form */
+@import url(../blocks/form/form.css);
+@import url(../blocks/form/__heading/form__heading.css);
+@import url(../blocks/form/__label/form__label.css);
+@import url(../blocks/form/__handlers/form__handlers.css);
+@import url(../blocks/form/__button/form__button.css);
+@import url(../blocks/form/__input/form__input.css);
+
+
+
