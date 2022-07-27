@@ -1,0 +1,10 @@
+.table__values:first-child {
+	border-left: none;
+}
+ .table__values:last-child {
+	border-right: none;
+    margin-right: 2%;
+}
+.table__values:nth-child(even){
+	background: #f3f3f3;
+}

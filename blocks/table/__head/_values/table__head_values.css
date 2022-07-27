@@ -1,0 +1,8 @@
+.table__head_values:first-child {
+	border-left: none;
+}
+
+.table__head_values:last-child {
+	border-right: none;
+    margin-right: 2%;
+}

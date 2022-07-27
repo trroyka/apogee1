@@ -1,5 +1,8 @@
 @import url(../vendor/normalize.css);
 
+/* RESPONSE */
+@import url(../blocks/response/response.css);
+
 /* form */
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__heading/form__heading.css);
@@ -8,5 +11,10 @@
 @import url(../blocks/form/__button/form__button.css);
 @import url(../blocks/form/__input/form__input.css);
 
-
+/* table */
+@import url(../blocks/table/table.css);
+@import url(../blocks/table/__head/_values/table__head_values.css);
+@import url(../blocks/table/__head/__value/table__head_value.css);
+@import url(../blocks/table/__values/table__values.css);
+@import url(../blocks/table/__value/table__value.css);
 

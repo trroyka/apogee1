@@ -1,9 +1,7 @@
 .form {
     width: 25%;
     background: rgba(255, 255, 255, .95);
-    position: fixed;
-    top: 0;
-    left: 5%;
+    margin-left: 5%;
     transition: left .5s;
     font-family: 'Alegreya Sans', sans-serif;
   }
