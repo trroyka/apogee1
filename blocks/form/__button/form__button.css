@@ -11,11 +11,11 @@
   }
 
   .form__button:hover {
-    opacity: .7;
+    opacity: .5;
   }
   
   .form__button[type="submit"] {
-    background-color: #000;
+    background-color: rgb(77, 75, 75);
   }
 
   .form__button[type="reset"] {
