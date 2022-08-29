@@ -1,5 +1,7 @@
 @import url(../vendor/normalize.css);
 
+@import url(../blocks/page/page.css);
+
 /* RESPONSE */
 @import url(../blocks/response/response.css);
 
@@ -11,12 +13,13 @@
 @import url(../blocks/form/__button/form__button.css);
 @import url(../blocks/form/__inputs/form__inputs.css);
 @import url(../blocks/form/__input/form__input.css);
+@import url(../blocks/form/__select-label/form__select-label.css);
 @import url(../blocks/form/__input-request/form__input-request.css);
 
 /* table */
 @import url(../blocks/table/table.css);
-@import url(../blocks/table/__head/_values/table__head_values.css);
-@import url(../blocks/table/__head/__value/table__head_value.css);
+@import url(../blocks/table/__head/table__head.css);
+@import url(../blocks/table/__value/_place-head/table__value_place-head.css);
 @import url(../blocks/table/__values/table__values.css);
 @import url(../blocks/table/__value/table__value.css);
 

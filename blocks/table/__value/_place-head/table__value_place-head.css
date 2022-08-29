@@ -1,10 +1,8 @@
-
-.table__head_value {
-	font-weight: bold;
+.table__value_place-head {
+    font-weight: bold;
 	text-align: left;
 	border: none;
 	padding: 10px 15px;
 	background: #030303;
     color: #fff;
-	font-size: 16px;
 }
