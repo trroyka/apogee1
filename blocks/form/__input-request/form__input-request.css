@@ -1,0 +1,10 @@
+.form__input-request {
+    border: 0;
+    width: 90%;
+    height: 24px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #bcbcc4;
+    background-color: transparent;
+    margin-top: 5px;
+    font-size: 14px;
+  }
