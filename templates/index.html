@@ -2,32 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./pages/index.css">
+    <link rel="stylesheet" href="./css/pages/index.css">
     <title>OKN</title>
 </head>
 <body>
+    <form action="/" method="post">
     <div class="page">
         <form class="request">
             <div class="form">
                 <h2 class="form__heading">Задайте параметры</h2>
+                <form action="/" method="post">
                 <div class="form__inputs">
                     <div class="form__input">
                         <label for="request__input_1" class="form__label">
                             Апогей
                         </label>
-                        <input type="text" class="form__input-request" name="" id="request__input_1" placeholder="Задайте апогей">
+                        <input name="apog" type="text" class="form__input-request" id="request__input_1" placeholder="Задайте апогей" value="{{ apog }}">
                     </div>
                     <div class="form__input">
                         <label for="request__input_2" class="form__label">
                             Перигей
                         </label>
-                        <input type="text" class="form__input-request" name="" id="request__input_2" placeholder="Залайте перигей">
+                        <input type="text" class="form__input-request" name="perig" id="request__input_2" placeholder="Задайте перигей" value="{{ perig }}">
                     </div>
                     <div class="form__input">
                         <label for="request__input_3" class="form__label">
                             Наклонение
                         </label>
-                        <input type="text" class="form__input-request" name="" id="request__input_3" placeholder="Уточните наклонение">
+                        <input type="text" class="form__input-request" name="inclin" id="request__input_3" placeholder="Уточните наклонение" value="{{ inclin }}">
                     </div>
                     <div class="form__input">
                         <label for="request__input_4" class="form__label">
@@ -35,6 +37,9 @@
                         </label>
                         <select type="text" class="form__input-request form__select-label" name="" id="request__input_4" placeholder="Выберите страну">
                             <option class="form__select-label">Выберите страну</option>
+                             {% for k in countries %}
+                            <option class="form__select-label">{{ k }}</option>
+                             {% endfor %}
                         </select>
                     </div>
                     <div class="form__input">
@@ -44,41 +49,42 @@
                         <input type="date" class="form__input-request form__select-label" name="" id="request__input_5" placeholder="Выберите дату">
                     </div>
                 </div>
-                <fieldset class="form__buttons">
-                    <input type="submit" class="form__button" value="Искать">
-                    <input type="reset" class="form__button">
-                </fieldset>
+            </form>
             </div>
         </form>
         <section class="response">
+            <fieldset class="form__buttons">
+                
+                         <button type="submit" class="form__button">Искать</button>
+                         <input type="reset" class="form__button">
+                
+                
+            </fieldset>
+            {% if dict is iterable %}
             <table class="table">
-                <thead class="table__head">
-                    <tr class="table__values">
-                        <td class="table__value_place-head">1</td>
-                        <td class="table__value_place-head">2</td>
-                        <td class="table__value_place-head">3</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="table__values">
-                        <td class="table__value">1</td>
-                        <td class="table__value">2</td>
-                        <td class="table__value">3</td>
-                    </tr>
-                    <tr class="table__values">
-                        <td class="table__value">1</td>
-                        <td class="table__value">2</td>
-                        <td class="table__value">3</td>
-                    </tr>
-                    <tr class="table__values">
-                        <td class="table__value">1</td>
-                        <td class="table__value">2</td>
-                        <td class="table__value">3</td>
-                    </tr>
-                </tbody>
+                 <thead class="table__head">
+                     <tr class="table__values">
+                        {% for k in dict %}
+                        <th class="table__value_place-head"> {{k[0]}}</th>
+                        {% endfor %}
+                      </tr>
+                  </thead>
+                  <tbody>
+                       {% for i in range(1, dict[0]|length) %}
+                       <tr class="table__values">
+                         {% for v in dict %}
+                         <td class="table__value"> {{ v[i] }}</td>
+                         {% endfor %}
+                        </tr>
+                       {% endfor %}
+                  </tbody>
+
             </table>
+            {% endif %}
+
         </section>
+    </form>
     </div>
-    <script src="./index.js"></script>
+    <script src=".js/index.js"></script>
 </body>
 </html>

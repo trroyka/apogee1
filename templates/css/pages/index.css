@@ -4,13 +4,14 @@
 
 /* RESPONSE */
 @import url(../blocks/response/response.css);
+@import url(../blocks/response/__buttons/form__buttons.css);
+@import url(../blocks/response/__button/form__button.css);
 
 /* form */
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__heading/form__heading.css);
 @import url(../blocks/form/__label/form__label.css);
-@import url(../blocks/form/__buttons/form__buttons.css);
-@import url(../blocks/form/__button/form__button.css);
+
 @import url(../blocks/form/__inputs/form__inputs.css);
 @import url(../blocks/form/__input/form__input.css);
 @import url(../blocks/form/__select-label/form__select-label.css);
