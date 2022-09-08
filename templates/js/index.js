@@ -16,7 +16,8 @@ const intervalToInclin = document.querySelector('.input-request_name_inclin')
 const intervalInputInclin = document.querySelector('.interval_type_inclin')
 
 // open table with btn find
-function openTable() {
+function openTable(event) {
+    event.preventDefault(); 
     container.classList.add('container_opened');
     console.log(1);
 }
