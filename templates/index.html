@@ -17,19 +17,32 @@
                         <label for="request__input_1" class="form__label">
                             Апогей
                         </label>
-                        <input name="apog" type="text" class="form__input-request" id="request__input_1" placeholder="Задайте апогей" value="{{ apog }}">
+                        <div class="form__interval interval_type_apogey">
+                            <input name="apog" type="text" class="form__input-request input-request_type_from" id="request__input_1" placeholder="Задайте апогей" value="{{ apog }}">
+                            <p class="form__sign">-</p>
+                            <input class="form__input-request input-request_type_to input-request_name_apogey" type="text">
+                        </div>
                     </div>
                     <div class="form__input">
                         <label for="request__input_2" class="form__label">
                             Перигей
                         </label>
-                        <input type="text" class="form__input-request" name="perig" id="request__input_2" placeholder="Задайте перигей" value="{{ perig }}">
+                        <div class="form__interval interval_type_perigey">
+                            <input type="text" class="form__input-request input-request_type_from" name="perig" id="request__input_2" placeholder="Задайте перигей" value="{{ perig }}">
+                            <p class="form__sign">-</p>
+                            <input class="form__input-request input-request_type_to input-request_name_perigey" type="text">
+                        </div>
                     </div>
                     <div class="form__input">
                         <label for="request__input_3" class="form__label">
                             Наклонение
                         </label>
-                        <input type="text" class="form__input-request" name="inclin" id="request__input_3" placeholder="Уточните наклонение" value="{{ inclin }}">
+                        <div class="form__interval interval_type_inclin">
+                            <input type="text" class="form__input-request input-request_type_from" name="inclin" id="request__input_3" placeholder="Уточните наклонение" value="{{ inclin }}">
+                            <p class="form__sign">-</p>
+                            <input class="form__input-request input-request_type_to input-request_name_inclin" type="text">
+                        </div>
+                        
                     </div>
                     <div class="form__input">
                         <label for="request__input_4" class="form__label">
@@ -49,42 +62,38 @@
                         <input type="date" class="form__input-request form__select-label" name="" id="request__input_5" placeholder="Выберите дату">
                     </div>
                 </div>
+                <fieldset class="form__buttons">
+                    <button type="submit" class="form__button form__button_type_find">Искать</button>
+                    <input type="reset" class="form__button form__button_type_reset">
+                </fieldset>
+                <div class="container">
+                    {% if dict is iterable %}
+                    <table class="table">
+                        <thead class="table__head">
+                            <tr class="table__values">
+                                {% for k in dict %}
+                                <th class="table__value_place-head"> {{k[0]}}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in range(1, dict[0]|length) %}
+                            <tr class="table__values">
+                                {% for v in dict %}
+                                <td class="table__value"> {{ v[i] }}</td>
+                                {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+    
+                    </table>
+                    {% endif %}
+                </div>
             </form>
             </div>
         </form>
-        <section class="response">
-            <fieldset class="form__buttons">
-                
-                         <button type="submit" class="form__button">Искать</button>
-                         <input type="reset" class="form__button">
-                
-                
-            </fieldset>
-            {% if dict is iterable %}
-            <table class="table">
-                 <thead class="table__head">
-                     <tr class="table__values">
-                        {% for k in dict %}
-                        <th class="table__value_place-head"> {{k[0]}}</th>
-                        {% endfor %}
-                      </tr>
-                  </thead>
-                  <tbody>
-                       {% for i in range(1, dict[0]|length) %}
-                       <tr class="table__values">
-                         {% for v in dict %}
-                         <td class="table__value"> {{ v[i] }}</td>
-                         {% endfor %}
-                        </tr>
-                       {% endfor %}
-                  </tbody>
-
-            </table>
-            {% endif %}
-
-        </section>
     </form>
     </div>
-    <script src=".js/index.js"></script>
+    <script src="./js/index.js"></script>
 </body>
 </html>

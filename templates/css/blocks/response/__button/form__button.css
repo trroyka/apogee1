@@ -14,11 +14,3 @@
     opacity: .5;
   }
   
-  .form__button[type="submit"] {
-    background-color: rgb(0, 0, 0);
-  }
-
-  .form__button[type="reset"] {
-    background-color: #ea3a3a;
-  }
-  

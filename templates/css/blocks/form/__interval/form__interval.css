@@ -1,0 +1,12 @@
+.form__interval {
+    width: 95%;
+    display: grid;
+    grid-template-columns: minmax(50%,80%) auto auto;
+    grid-template-rows: auto;
+    grid-template-areas: 'from p to';
+    border-bottom: 1px solid #bcbcc4;
+}
+
+.form__interval_type_equal {
+    grid-template-columns: 50% auto 48%;
+}
