@@ -1,3 +1,8 @@
+table{
+    width:100%;
+    table-layout: fixed;    
+  }
+
 .table__head {
     color: rgb(255, 255, 255);
     background-color: rgb(121, 121, 121);
