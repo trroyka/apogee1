@@ -16,26 +16,25 @@ images_directory = os.path.join(template_folder, "images")
 
 app = Flask(__name__, template_folder=template_folder)
 
-name = 'sputnik'
-apog = '-'
-perig = '-'
-inclin = '-'
+apog = ''
+perig = ''
+inclin = ''
 
 
 @app.route("/")
 def index():
     with open('страны.txt') as f:
         l = f.read().splitlines()
-    return render_template("index.html", name=name, apog=apog, perig=perig, inclin=inclin, countries=l)
+    return render_template("index.html", apog=apog, perig=perig, inclin=inclin, countries=l)
 
 
 @app.route("/", methods=['GET', 'POST'])
 def move_forward():
     with open('страны.txt') as f:
         l = f.read().splitlines()
-    apog = None  # запрос к данным формы
-    perig = None
-    inclin = None
+    apog = ''  # запрос к данным формы
+    perig = ''
+    inclin = ''
     if request.method == 'POST':
         apog = request.form.get('apog')
         if apog.isdigit():
@@ -52,7 +51,6 @@ def move_forward():
             inclin = int(inclin)
         else:
             inclin = None
-
         print(apog, perig, inclin)
     from python_scripts.check_Postgres import create_list_for_table
     list_of_words = create_list_for_table(apog=apog, perig=perig, inclin=inclin)

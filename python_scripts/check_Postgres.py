@@ -8,6 +8,7 @@ logging.basicConfig(level=logging.INFO,
 logger = logging.getLogger('Satnums_logger')
 
 
+# тут клепаем запрос на вытаскивание необходимых данных по параметрам из формы
 def create_query(apog=None, perig=None, inclin=None):
     if apog is not None or perig is not None or inclin is not None:
         select_Query_orbit = f'''select "SATNUM", "APOG", "PERIG", "INCLIN_ANG" from public.itu8orbit where'''
@@ -21,13 +22,30 @@ def create_query(apog=None, perig=None, inclin=None):
                 select_Query_orbit += f''' and'''
         if inclin is not None:
             select_Query_orbit += f''' "INCLIN_ANG" between {inclin - 10} and {inclin + 10}'''
-        print(select_Query_orbit)
         return select_Query_orbit
 
-def create_query_satmame(satnum=None):
+
+# тут ищем номер нтс и название спутника
+def create_query_satmame(satnum, cursor):
     if satnum is not None:
-        select_Query_orbit = f'''select "SAT_NAME", "NTC_ID" from itu8sats where "ID" = {satnum}'''
-        return select_Query_orbit
+        select_Query_satname = f'''select "SAT_NAME", "NTC_ID" from itu8sats where "ID" = {satnum}'''
+        cursor.execute(select_Query_satname)
+        name_ntc_date = cursor.fetchall()[0]
+        return name_ntc_date
+
+
+# тут мы ищем название страны через поиск аббревиатуры, аббревиатуру ищем по нтс номеру
+def create_query_country(ntc, cursor):
+    if ntc is not None:
+        select_Query_abbr = f'''select "ADM0", "D_RCV" from itu8notice where "NTC_ID" = {ntc}'''
+        cursor.execute(select_Query_abbr)
+        ctry_abbr, date = cursor.fetchall()[0]
+        print(ctry_abbr)
+        select_Query_ctry = f'''select "CTRY_NAME" from itu8country where "CTRY" = '{ctry_abbr}' '''
+        cursor.execute(select_Query_ctry)
+        ctry = cursor.fetchall()[0][0]
+        return ctry, date
+
 
 def create_list_for_table(apog=23600, perig=None, inclin=None):
     logger.info(f'Ищем данные для апогея = {apog}км, перигея = {perig}км, наклонения = {inclin} градусов')
@@ -43,17 +61,24 @@ def create_list_for_table(apog=23600, perig=None, inclin=None):
         cursor.execute(postgreSQL_select_Query_orbit)
         orbits = cursor.fetchall()
         names = cursor.description
-        list_for_return = [['SAT_NAME']]
-        for a in orbits:
-            list_for_return[0].append(1)
+        list_for_return = []
         print(orbits)
-        j = 1
+        j = 0
         for i in names:
             list_for_return.append([i.name])
             for a in orbits:
-                list_for_return[j].append(a[j-1])
+                list_for_return[j].append(a[j])
             j += 1
+        list_for_return.append(['SAT_NAME'])
+        list_for_return.append(['COUNTRY'])
+        list_for_return.append(['DATE_RCV'])
 
+        for val in list_for_return[0][1:]:
+            name, ntc = create_query_satmame(val, cursor)
+            list_for_return[j].append(name)
+            ctry, date = create_query_country(ntc, cursor)
+            list_for_return[j+1].append(ctry)
+            list_for_return[j+2].append(date)
         if len(list_for_return[0]) > 1:
             logger.info(f'Данные найдены и выведены в интерфейс')
         else:
@@ -70,7 +95,6 @@ def create_list_for_table(apog=23600, perig=None, inclin=None):
             connection.close()
 
 
-
 connection = psycopg2.connect("host=localhost"
                               " dbname=itu_base_oracle"
                               " user=postgres "
@@ -78,7 +102,7 @@ connection = psycopg2.connect("host=localhost"
 
 cursor = connection.cursor()
 
-query = create_query_satmame(satnum=8)
-print(query)
-cursor.execute(query)
-print(cursor.fetchall())
+name, ntc = create_query_satmame(22403, cursor)
+print(name, ntc)
+ctry, date = create_query_country(ntc, cursor)
+print(ctry, date)

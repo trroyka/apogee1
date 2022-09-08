@@ -10,8 +10,7 @@
     <div class="page">
         <form class="request">
             <div class="form">
-                <h2 class="form__heading">Задайте параметры</h2>
-                <form action="/" method="post">
+                <h2 class="form__heading">Задайте параметры</h2>                
                 <div class="form__inputs">
                     <div class="form__input">
                         <label for="request__input_1" class="form__label">
@@ -49,40 +48,43 @@
                         <input type="date" class="form__input-request form__select-label" name="" id="request__input_5" placeholder="Выберите дату">
                     </div>
                 </div>
-            </form>
+                <fieldset class="form__buttons">
+                
+                    <button type="submit" class="form__button">Искать</button>
+                    <input type="reset" class="form__button">               
+           
+                </fieldset>
+                {% if dict is iterable %}
+                <div class="table-header">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <thead class="table__head">
+                            <tr class="table__values">
+                                {% for k in dict %}
+                                <th class="table__value_place-head"> {{k[0]}}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                    </table>                        
+                </div>
+
+                <div class="table-content">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            {% for i in range(1, dict[0]|length) %}
+                            <tr class="table__values">
+                                {% for v in dict %}
+                                <td class="table__value"> {{ v[i] }}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>                  
+                
+                
+                {% endif %}            
             </div>
         </form>
-        <section class="response">
-            <fieldset class="form__buttons">
-                
-                         <button type="submit" class="form__button">Искать</button>
-                         <input type="reset" class="form__button">
-                
-                
-            </fieldset>
-            {% if dict is iterable %}
-            <table class="table">
-                 <thead class="table__head">
-                     <tr class="table__values">
-                        {% for k in dict %}
-                        <th class="table__value_place-head"> {{k[0]}}</th>
-                        {% endfor %}
-                      </tr>
-                  </thead>
-                  <tbody>
-                       {% for i in range(1, dict[0]|length) %}
-                       <tr class="table__values">
-                         {% for v in dict %}
-                         <td class="table__value"> {{ v[i] }}</td>
-                         {% endfor %}
-                        </tr>
-                       {% endfor %}
-                  </tbody>
-
-            </table>
-            {% endif %}
-
-        </section>
     </form>
     </div>
     <script src=".js/index.js"></script>
