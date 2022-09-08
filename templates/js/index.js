@@ -2,8 +2,8 @@
 const container = document.querySelector('.container')
 
 // buttons
-const findBtn = document.querySelector('.form__button_type_find')
-const resetBtn = document.querySelector('.form__button_type_reset')
+const findBtn = document.querySelector('#form__button_type_find')
+const resetBtn = document.querySelector('#form__button_type_reset')
 
 // inputs chenges
 const intervalToApog = document.querySelector('.input-request_name_apogey')
