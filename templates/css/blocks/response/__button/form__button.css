@@ -13,4 +13,11 @@
   .form__button:hover {
     opacity: .5;
   }
-  
+
+  .send_button {
+    background-color: #ea3a3a;
+  }
+
+  .reset_button {
+    background-color: rgb(0, 0, 0);
+  }

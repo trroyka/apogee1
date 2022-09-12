@@ -35,28 +35,61 @@ def move_forward():
     apog = ''  # запрос к данным формы
     perig = ''
     inclin = ''
+    datetime1 = ''
+    country = ''
+    delapog = 0
+    delperig = 0
+    delinclin = 0
     if request.method == 'POST':
         apog = request.form.get('apog')
+        delapog = request.form.get('del_apog')
         if apog.isdigit():
             apog = int(apog)
         else:
             apog = None
+        if delapog.isdigit():
+            delapog = int(delapog)
+        else:
+            delapog = 0
+
+
         perig = request.form.get('perig')
+        delperig = request.form.get('del_perig')
         if perig.isdigit():
             perig = int(perig)
         else:
             perig = None
+        if delperig.isdigit():
+            delperig = int(delperig)
+        else:
+            delperig = 0
+
         inclin = request.form.get('inclin')
+        delinclin = request.form.get('del_inclin')
         if inclin.isdigit():
             inclin = int(inclin)
         else:
             inclin = None
-        print(apog, perig, inclin)
+        if delinclin.isdigit():
+            delinclin = int(delinclin)
+        else:
+            delinclin = 0
+
+        datetime1 = request.form.get('date_r')
+        if datetime1 == '':
+            datetime1 = None
+        country = request.form.get('country')
+        if country == 'Выберите страну':
+            country = None
+        print(country)
     from python_scripts.check_Postgres import create_list_for_table
-    list_of_words = create_list_for_table(apog=apog, perig=perig, inclin=inclin)
+    list_of_words = create_list_for_table(apog=apog, perig=perig, inclin=inclin,
+                                          date_r=datetime1, country=country,
+                                          delapog=delapog, delperig=delperig, delinclin=delinclin)
+
 
     return render_template('index.html', dict=list_of_words, countries=l,
-                           apog=apog, perig=perig, inclin=inclin)
+                           apog=apog, perig=perig, inclin=inclin, date_r=datetime1, country=country)
 
 
 @app.route("/js/<path:path>")
