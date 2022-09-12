@@ -15,6 +15,9 @@ const intervalInputPerig = document.querySelector('.interval_type_perigey')
 const intervalToInclin = document.querySelector('.input-request_name_inclin')
 const intervalInputInclin = document.querySelector('.interval_type_inclin')
 
+const intervalToDate = document.querySelector('.input-request_name_date')
+const intervalInputDate = document.querySelector('.interval_type_date')
+
 // open table with btn find
 function openTable(event) {
     event.preventDefault(); 
@@ -44,12 +47,16 @@ intervalToPerig.addEventListener('blur', () => intervalBlur(intervalInputPerig, 
 intervalToInclin.addEventListener('focus', () => intervalEqual(intervalInputInclin))
 intervalToInclin.addEventListener('blur', () => intervalBlur(intervalInputInclin, intervalToInclin))
 
+intervalToDate.addEventListener('focus', () => intervalEqual(intervalInputDate))
+intervalToDate.addEventListener('blur', () => intervalBlur(intervalInputDate, intervalToDate))
+
 
 // click on reset
 function deleteEqual() {
     intervalInputApog.classList.remove("form__interval_type_equal")
     intervalInputPerig.classList.remove("form__interval_type_equal")
     intervalInputInclin.classList.remove("form__interval_type_equal")
+    intervalInputDate.classList.remove("form__interval_type_equal")
 }
 
 resetBtn.addEventListener('click', deleteEqual)
