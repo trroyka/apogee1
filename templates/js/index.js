@@ -22,7 +22,7 @@ function openTable(event) {
     console.log(1);
 }
 
-findBtn.addEventListener('click', openTable);
+// findBtn.addEventListener('click', openTable);
 
 // change inputs intervals
 function intervalEqual(elem) {

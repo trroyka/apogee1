@@ -29,7 +29,7 @@
                         <div class="form__interval interval_type_perigey">
                             <input type="text" class="form__input-request input-request_type_from" name="perig" id="request__input_2" placeholder="Задайте перигей" value="{{ perig }}">
                             <p class="form__sign">-</p>
-                            <input class="form__input-request input-request_type_to input-request_name_perigey" name="del_perig" type="text" placeholder="ре">
+                            <input class="form__input-request input-request_type_to input-request_name_perigey" name="del_perig" type="text" placeholder="до">
                         </div>
                     </div>
                     <div class="form__input">
@@ -39,14 +39,14 @@
                         <div class="form__interval interval_type_inclin">
                             <input type="text" class="form__input-request input-request_type_from" name="inclin" id="request__input_3" placeholder="Уточните наклонение" value="{{ inclin }}">
                             <p class="form__sign">-</p>
-                            <input class="form__input-request input-request_type_to input-request_name_inclin" name="del_inclin" type="text" placeholder="ми">
+                            <input class="form__input-request input-request_type_to input-request_name_inclin" name="del_inclin" type="text" placeholder="до">
                         </div>
                     </div>
                     <div class="form__input">
                         <label for="request__input_4" class="form__label" >
                             Страна
                         </label>
-                        <select class="form__input-request form__select-label" name="country" id="request__input_4" required>
+                        <select class="form__input-request form__bottom form__select-label" name="country" id="request__input_4" required>
                             <option class="form__select-label"> Выберите страну</option>
                              {% for k in countries %}
                             <option class="form__select-label">{{ k }}</option>
@@ -57,8 +57,13 @@
                         <label for="request__input_5" class="form__label">
                             Дата
                         </label>
-                        <input type="date" class="form__input-request form__select-label" name="date_r" id="request__input_5"
-                               placeholder="Выберите дату" value="{{datetime1}}">
+                        <div class="form__interval interval_type_date">
+                            <input type="date" class="form__input-request form__select-label" name="date_r" id="request__input_5"
+                                placeholder="Выберите дату" value="{{datetime1}}">
+                            <p class="form__sign">-</p>
+                            <input type="date" class="form__input-request form__select-label" name="date_r" id="request__input_6"
+                               placeholder="до" value="{{datetime2}}">
+                        </div>
                     </div>
                 </div>
                 <fieldset class="form__buttons">
