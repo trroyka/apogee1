@@ -1,0 +1,33 @@
+@import url(../vendor/normalize.css);
+
+@import url(../css/page/page.css);
+
+/* RESPONSE */
+@import url(../css/response/response.css);
+@import url(../css/response/__buttons/form__buttons.css);
+@import url(../css/response/__button/form__button.css);
+@import url(../css/response/__button/_type/form__button_type_find.css);
+@import url(../css/response/__button/_type/form__button_type_reset.css);
+
+/* form */
+@import url(../css/form/form.css);
+@import url(../css/form/__heading/form__heading.css);
+@import url(../css/form/__label/form__label.css);
+
+@import url(../css/form/__inputs/form__inputs.css);
+@import url(../css/form/__input/form__input.css);
+@import url(../css/form/__select-label/form__select-label.css);
+@import url(../css/form/__input-request/form__input-request.css);
+@import url(../css/form/__input-request/_type/input-request_type_from.css);
+@import url(../css/form/__sign/form__sign.css);
+@import url(../css/form/__input-request/_type/input-request_type_to.css);
+@import url(../css/form/__interval/form__interval.css);
+
+/* table */
+@import url(../css/container/container.css);
+@import url(../css/container/_opened/container_opened.css);
+@import url(../css/table/table.css);
+@import url(../css/table/__head/table__head.css);
+@import url(../css/table/__value/_place-head/table__value_place-head.css);
+@import url(../css/table/__values/table__values.css);
+@import url(../css/table/__value/table__value.css);

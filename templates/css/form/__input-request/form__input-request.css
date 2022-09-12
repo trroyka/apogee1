@@ -5,8 +5,5 @@
     box-sizing: border-box;
     background-color: transparent;
     margin-top: 5px;
-  }
-
-  .form__bottom {
-    border-bottom: 1px solid #bcbcc4;
+    opacity: 0.8;
   }
