@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./pages/index.css">
+    <link rel="stylesheet" href="./css/pages/index.css">
     <title>OKN</title>
 </head>
 <body>
@@ -15,9 +15,10 @@
                         Апогей
                     </label>
                     <div class="form__interval interval_type_apogey">
-                        <input name="apog" type="text" class="form__input-request input-request_type_from" id="request__input_1" placeholder="Задайте апогей" value="{{ apog }}">
+                        <input name="apog" type="text" class="form__input-request input-request_type_from" id="request__input_1" placeholder="Задайте апогей"
+                               value="{{ apog }}">
                         <p class="form__sign">-</p>
-                        <input class="form__input-request input-request_type_to input-request_name_apogey" type="text" name="del_apog" placeholder="до">
+                        <input class="form__input-request input-request_type_to input-request_name_apogey" type="text" name="del_apog" placeholder="+-" value="{{ delapog }}">
                     </div>
                 </div>
                 <div class="form__input">
@@ -27,7 +28,7 @@
                     <div class="form__interval interval_type_perigey">
                         <input type="text" class="form__input-request input-request_type_from" name="perig" id="request__input_2" placeholder="Задайте перигей" value="{{ perig }}">
                         <p class="form__sign">-</p>
-                        <input class="form__input-request input-request_type_to input-request_name_perigey" name="del_perig" type="text" placeholder="до">
+                        <input class="form__input-request input-request_type_to input-request_name_perigey" name="del_perig" type="text" placeholder="+-" value="{{ delperig }}">
                     </div>
                 </div>
                 <div class="form__input">
@@ -37,7 +38,15 @@
                     <div class="form__interval interval_type_inclin">
                         <input type="text" class="form__input-request input-request_type_from" name="inclin" id="request__input_3" placeholder="Уточните наклонение" value="{{ inclin }}">
                         <p class="form__sign">-</p>
-                        <input class="form__input-request input-request_type_to input-request_name_inclin" name="del_inclin" type="text" placeholder="до">
+                        <input class="form__input-request input-request_type_to input-request_name_inclin" name="del_inclin" type="text" placeholder="+-" value="{{ delinclin }}">
+                    </div>
+                </div>
+                <div class="form__input">
+                    <label for="request__input_5" class="form__label">
+                        Имя спутника
+                    </label>
+                    <div class="form__interval interval_type_inclin">
+                        <input type="text" class="form__input-request input-request_type_from" name="satname" id="request__input_3" placeholder="Введите имя спутника" value="{{ satname }}">                       
                     </div>
                 </div>
                 <div class="form__input">
@@ -45,6 +54,7 @@
                         Страна
                     </label>
                     <select class="form__input-request" name="country" id="request__input_4" required>
+                        <option class="form__select-label"> {{ country }}</option>
                         <option class="form__select-label"> Выберите страну</option>
                             {% for k in countries %}
                         <option class="form__select-label">{{ k }}</option>
@@ -56,17 +66,18 @@
                         Дата
                     </label>
                     <div class="form__interval interval_type_date">
-                        <input type="date" class="form__input-request" name="date_r" id="request__input_5"
-                            placeholder="Выберите дату" value="{{datetime1}}">
+                        <input type="date" class="form__input-request" name="date_r1" id="request__input_5"
+                            placeholder="Выберите дату" value="{{ date_r1 }}">
                         <p class="form__sign">-</p>
-                        <input type="date" class="form__input-request input-request_type_to input-request_name_date" name="date_r" id="request__input_6"
-                            placeholder="до" value="{{datetime2}}">
+                        <input type="date" class="form__input-request input-request_type_to input-request_name_date"
+                               name="date_r2" id="request__input_6"
+                            placeholder="до" value="{{ date_r2 }}">
                     </div>
                 </div>
             </div>
             <fieldset class="form__buttons">
                 <button type="submit" class="form__button send_button">Искать</button>
-                <input type="reset"  class="form__button reset_button">
+                <a href="/" type="button" class="form__button reset_button">Сброс</a>
             </fieldset>
             <div class="table">
                 {% if dict is iterable %}
