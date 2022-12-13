@@ -31,3 +31,7 @@
 @import url(../table/__value/_place-head/table__value_place-head.css);
 @import url(../table/__values/table__values.css);
 @import url(../table/__value/table__value.css);
+
+/* popup */
+@import url(../popup/popup.css);
+@import url(../popup/__container/popup__container.css);
